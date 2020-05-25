@@ -12,11 +12,14 @@ app.use(cors())
 const vs = "/api/v1/"
 
 //importar las rutas con los endpoints especificos
+const rutasAutenticacion = require('./routes/autenticacion')
+app.use(vs,rutasAutenticacion)
+
 const rutasUsuarios = require('./routes/usuarios')
 app.use(vs,rutasUsuarios)
 
 //puerto
-const port = process.env.PORT_NODE
+const port = process.env.PORT || 3000
 
 //Levantar el servidor para escuchar los puertos
 app.listen(port,() => {

@@ -11,7 +11,7 @@ class ServicioPG{
             host: process.env.HOSTDB,
             database: process.env.DB,
             password: process.env.PASSWORD,
-            port: process.env.PORT
+            port: process.env.PORT_DB
         });
     }
 
