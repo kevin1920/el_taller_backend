@@ -42,7 +42,7 @@ let obtenerMotos = async () => {
 
 let obtenerPlacas = async ()  => {
     let servicio = new ServicioPG()
-    let sql = `select placa from motos`
+    let sql = `select placa from motos where estado = 'en reparacion'`
     let respuesta = await servicio.ejecutarSQL(sql)
     return respuesta;
 }
