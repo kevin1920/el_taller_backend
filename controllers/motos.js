@@ -56,7 +56,7 @@ let actualizarMoto = async (id, info) => {
     let servicio = new ServicioPG()
     let sql = `update motos set estado = $1,clase = $2,marca = $3,modelo = $4,color = $5,cilindraje = $6,id_propietario = $7,nro_soat = $8,vencimiento_soat = $9,nro_tecnomecanica = $10,vencimiento_tecnomecanica = $11
     where placa = $12;`
-    let valores = [info.estado,info.clase,info.marca,info.modelo,info.color,info.cilindraje,info.idPropietario,info.nroSoat,nfo.vencimientoSoat,nfo.nroTecnomecanica,nfo.venTecnomecanica,id]
+    let valores = [info.estado,info.clase,info.marca,info.modelo,info.color,info.cilindraje,info.idPropietario,info.nroSoat,info.vencimientoSoat,info.nroTecnomecanica,info.venTecnomecanica,id]
     let respuesta = await servicio.ejecutarSQL(sql,valores)
     return respuesta;
 }

@@ -36,6 +36,7 @@ router.put('/motos/:id',(req,res) => {
     actualizarMoto(id,info).then(respuesta => {
         res.send(respuesta)
     }).catch(error => {
+        console.log(error)
         res.send(error)
     })
 })
