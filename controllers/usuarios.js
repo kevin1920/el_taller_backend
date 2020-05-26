@@ -41,6 +41,13 @@ let obtenerUsuarios = async () => {
     return respuesta;
 }
 
+let obtenerMecanicos = async () => {
+    let servicio = new ServicioPG()
+    let sql = `select documento,nombre,apellidos from usuarios where rol = 1`
+    let respuesta = await servicio.ejecutarSQL(sql)
+    return respuesta;
+}
+
 /**
  * Metodo que elimina informacion de la base de datos
  */
@@ -67,4 +74,4 @@ let actualizarUsuario = async (id, info) => {
     return respuesta;
 }
 
-module.exports = {validarInformacion,guardarUsuario,obtenerUsuarios,eliminarUsuario,actualizarUsuario}
+module.exports = {validarInformacion,guardarUsuario,obtenerUsuarios,eliminarUsuario,actualizarUsuario,obtenerMecanicos}

@@ -1,9 +1,17 @@
 const express = require('express')
 const router = express.Router()
-const {validarInformacion,guardarUsuario,obtenerUsuarios,eliminarUsuario,actualizarUsuario} = require('../controllers/usuarios')
+const {validarInformacion,guardarUsuario,obtenerUsuarios,eliminarUsuario,actualizarUsuario,obtenerMecanicos} = require('../controllers/usuarios')
 
 router.get('/usuarios',(req,res) => {
     obtenerUsuarios().then(respuesta => {
+        res.send(respuesta.rows)
+    }).catch(error => {
+        res.send(error)
+    })
+})
+
+router.get('/mecanicos',(req,res) => {
+    obtenerMecanicos().then(respuesta => {
         res.send(respuesta.rows)
     }).catch(error => {
         res.send(error)

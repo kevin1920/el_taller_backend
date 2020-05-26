@@ -21,6 +21,9 @@ app.use(vs,rutasUsuarios)
 const rutasMotos = require('./routes/motos')
 app.use(vs,rutasMotos)
 
+const rutasMantenimientos = require('./routes/mantenimientos')
+app.use(vs,rutasMantenimientos)
+
 //puerto
 const port = process.env.PORT || 3000
 

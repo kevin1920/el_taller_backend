@@ -40,6 +40,12 @@ let obtenerMotos = async () => {
     return respuesta;
 }
 
+let obtenerPlacas = async ()  => {
+    let servicio = new ServicioPG()
+    let sql = `select placa from motos`
+    let respuesta = await servicio.ejecutarSQL(sql)
+    return respuesta;
+}
 
 /**
  * Metodo que actualiza informacion de la base de datos
@@ -48,11 +54,11 @@ let obtenerMotos = async () => {
  */
 let actualizarMoto = async (id, info) => {
     let servicio = new ServicioPG()
-    let sql = `update motos set estado = $1,clase = $2,marca = $3,modelo = $4,color = $5,cilindraje = $6,nro_soat = $7,vencimiento_soat = $8,nro_tecnomecanica = $9,vencimiento_tecnomecanica = $10
-    where placa = $11;`
-    let valores = [info.estado,info.clase,info.marca,info.modelo,info.color,info.cilindraje,info.nroSoat,nfo.vencimientoSoat,nfo.nroTecnomecanica,nfo.venTecnomecanica,id]
+    let sql = `update motos set estado = $1,clase = $2,marca = $3,modelo = $4,color = $5,cilindraje = $6,id_propietario = $7,nro_soat = $8,vencimiento_soat = $9,nro_tecnomecanica = $10,vencimiento_tecnomecanica = $11
+    where placa = $12;`
+    let valores = [info.estado,info.clase,info.marca,info.modelo,info.color,info.cilindraje,info.idPropietario,info.nroSoat,nfo.vencimientoSoat,nfo.nroTecnomecanica,nfo.venTecnomecanica,id]
     let respuesta = await servicio.ejecutarSQL(sql,valores)
     return respuesta;
 }
 
-module.exports = {validarInformacion,guardarMoto,obtenerMotos,actualizarMoto}
+module.exports = {validarInformacion,guardarMoto,obtenerMotos,actualizarMoto,obtenerPlacas}
