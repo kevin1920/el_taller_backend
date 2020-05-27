@@ -27,7 +27,7 @@ router.post('/login',(req,res) => {
                 let token = generarToken(respuesta.rows[0])
                 res.status(200).send({ok:true, mensaje:"Usuario Autenticado", info: token, usuario:respuesta.rows[0]})
             }else{
-                res.status(400).send({ok:false, mensaje:"Identificacion y/o contraseña incorrecta", info: {}})
+                res.send({ok:false, mensaje:"Identificacion y/o contraseña incorrecta", info: {}})
             }
         }).catch(error => {
             console.log(error)
