@@ -22,8 +22,11 @@ router.post('/motos',(req,res) => {
     try {
         let info = req.body
         validarInformacion(info)
-        guardarMoto(info)
-        res.send({ok:true, mensaje:"El usuario se guardo correctamente", info: info})
+        guardarMoto(info).then(respuesta => {
+            res.send({ok:true, mensaje:"La moto se guardo correctamente", info: info})
+        }).catch(error => {
+            res.send(error)
+        })
     } catch (error) {
         console.log(error)
         res.send(error)

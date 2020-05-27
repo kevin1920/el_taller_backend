@@ -35,7 +35,7 @@ let guardarMoto = async info => {
  */
 let obtenerMotos = async () => {
     let servicio = new ServicioPG()
-    let sql = `select placa,estado,clase,marca,modelo,color,cilindraje,id_propietario,nro_soat,vencimiento_soat,nro_tecnomecanica,vencimiento_tecnomecanica from motos`
+    let sql = `select placa,estado,clase,marca,modelo,color,cilindraje,id_propietario,nro_soat,vencimiento_soat,nro_tecnomecanica,vencimiento_tecnomecanica from motos order by placa`
     let respuesta = await servicio.ejecutarSQL(sql)
     return respuesta;
 }
