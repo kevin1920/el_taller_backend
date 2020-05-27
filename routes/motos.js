@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {validarInformacion,guardarMoto,obtenerMotos,actualizarMoto,obtenerPlacas} = require('../controllers/motos')
+const {validarInformacion,guardarMoto,obtenerMotos,actualizarMoto,obtenerPlacas,actualizarEstado} = require('../controllers/motos')
 
 router.get('/motos',(req,res) => {
     obtenerMotos().then(respuesta => {
@@ -37,6 +37,17 @@ router.put('/motos/:id',(req,res) => {
     let info = req.body
     let id = req.params.id
     actualizarMoto(id,info).then(respuesta => {
+        res.send(respuesta)
+    }).catch(error => {
+        console.log(error)
+        res.send(error)
+    })
+})
+
+router.put('/estado/:id',(req,res) => {
+    let info = req.body
+    let id = req.params.id
+    actualizarEstado(id,info).then(respuesta => {
         res.send(respuesta)
     }).catch(error => {
         console.log(error)

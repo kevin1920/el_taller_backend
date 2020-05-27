@@ -22,9 +22,12 @@ router.post('/usuarios',(req,res) => {
     try {
         let info = req.body
         validarInformacion(info)
-        guardarUsuario(info)
-        delete info.clave
-        res.send({ok:true, mensaje:"El usuario se guardo correctamente", info: info})
+        guardarUsuario(info).then(respuesta => {
+            delete info.clave
+            res.send({ok:true, mensaje:"El usuario se guardo correctamente", info: info})
+        }).catch(error => {
+            res.send(error)
+        })
     } catch (error) {
         console.log(error)
         res.send(error)

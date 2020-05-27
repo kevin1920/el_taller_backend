@@ -42,7 +42,7 @@ let obtenerMotos = async () => {
 
 let obtenerPlacas = async ()  => {
     let servicio = new ServicioPG()
-    let sql = `select placa from motos where estado = 'en reparacion'`
+    let sql = `select placa from motos where estado = 'mala'`
     let respuesta = await servicio.ejecutarSQL(sql)
     return respuesta;
 }
@@ -61,4 +61,12 @@ let actualizarMoto = async (id, info) => {
     return respuesta;
 }
 
-module.exports = {validarInformacion,guardarMoto,obtenerMotos,actualizarMoto,obtenerPlacas}
+let actualizarEstado = async (id, info) => {
+    let servicio = new ServicioPG()
+    let sql = `update motos set estado = $1 where placa = $2;`
+    let valores = [info.estado,id]
+    let respuesta = await servicio.ejecutarSQL(sql,valores)
+    return respuesta;
+}
+
+module.exports = {validarInformacion,guardarMoto,obtenerMotos,actualizarMoto,obtenerPlacas,actualizarEstado}
