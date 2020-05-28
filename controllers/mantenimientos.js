@@ -22,8 +22,8 @@ let validarInformacion = info => {
 
 let guardarMantenimiento = async info => {
     let servicio = new ServicioPG()
-    let sql = `insert into mantenimientos(id_mecanico,placa,fecha) values($1,$2,$3)`
-    let valores = [info.idMecanico,info.placa,info.fecha]
+    let sql = `insert into mantenimientos(id_mecanico,placa,fecha,trabajos_realizados,horas_invertidas) values($1,$2,$3,$4,$5)`
+    let valores = [info.idMecanico,info.placa,info.fecha,info.trabajosRealizados,info.horasInvertidas]
     let respuesta = await servicio.ejecutarSQL(sql,valores)
     return respuesta;
 }
@@ -33,7 +33,7 @@ let guardarMantenimiento = async info => {
  */
 let traerMantenimientoMecanico = async id => {
     let servicio = new ServicioPG()
-    let sql = `select placa,fecha from mantenimientos where id_mecanico = $1`
+    let sql = `select placa,fecha from mantenimientos where id_mecanico = $1 and trabajos_realizados = 'ninguno'`
     let valores = [id]
     let respuesta = await servicio.ejecutarSQL(sql,valores)
     return respuesta;
