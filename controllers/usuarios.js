@@ -16,7 +16,7 @@ let validarInformacion = info => {
 }
 
 /**
- * Metodo que guarda en la base de datos la informacion
+ * Metodo que guarda un usuario en la base de datos
  * @param {*} info 
  */
 
@@ -30,7 +30,7 @@ let guardarUsuario = async info => {
 }
 
 /**
- * Metodo que obtiene informacion de la base de datos
+ * Metodo que obtiene los usuarios de la base de datos
  */
 let obtenerUsuarios = async () => {
     let servicio = new ServicioPG()
@@ -41,6 +41,9 @@ let obtenerUsuarios = async () => {
     return respuesta;
 }
 
+/**
+ * Metodo que obtiene los mecanicos
+ */
 let obtenerMecanicos = async () => {
     let servicio = new ServicioPG()
     let sql = `select documento,nombre,apellidos from usuarios where rol = 1`
@@ -49,7 +52,7 @@ let obtenerMecanicos = async () => {
 }
 
 /**
- * Metodo que elimina informacion de la base de datos
+ * Metodo que elimina un usuario de la base de datos
  */
 let eliminarUsuario = async (id) => {
     let servicio = new ServicioPG()
@@ -60,7 +63,7 @@ let eliminarUsuario = async (id) => {
 }
 
 /**
- * Metodo que actualiza informacion de la base de datos
+ * Metodo que actualiza un usuario de la base de datos
  * @param {*} id 
  * @param {*} info 
  */

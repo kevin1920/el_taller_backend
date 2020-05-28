@@ -16,7 +16,7 @@ let validarInformacion = info => {
 }
 
 /**
- * Metodo que obtiene informacion de la base de datos
+ * Metodo que obtiene los consolidados de la base de datos
  */
 let obtenerConsolidado = async info => {
     let servicio = new ServicioPG()

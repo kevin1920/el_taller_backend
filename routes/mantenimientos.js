@@ -1,7 +1,11 @@
+//importar librerias
 const express = require('express')
 const router = express.Router()
 const {validarInformacion,guardarMantenimiento,traerMantenimientoMecanico,traerMantenimientoAdmin,eliminarMantenimiento,actualizarMantenimiento} = require('../controllers/mantenimientos')
 
+/**
+ * Endpoint que envia los mantenimientos de un mecanico
+ */
 router.get('/mantenimientoMecanicos/:id',(req,res) => {
     let id = req.params.id
     traerMantenimientoMecanico(id).then(respuesta => {
@@ -12,6 +16,9 @@ router.get('/mantenimientoMecanicos/:id',(req,res) => {
     })
 })
 
+/**
+ * Endpoint que envia todos los mantenimientos
+ */
 router.get('/mantenimientoAdmin',(req,res) => {
     traerMantenimientoAdmin().then(respuesta => {
         res.send(respuesta.rows)
@@ -20,6 +27,9 @@ router.get('/mantenimientoAdmin',(req,res) => {
     })
 })
 
+/**
+ * Endpoint que guarda un mantenimiento
+ */
 router.post('/mantenimientos',(req,res) => {
     try {
         let info = req.body
@@ -32,6 +42,9 @@ router.post('/mantenimientos',(req,res) => {
     }
 })
 
+/**
+ * Endpoint que actualiza un mantenimiento
+ */
 router.put('/mantenimientos/:placa',(req,res) => {
     let info = req.body
     let placa = req.params.placa
@@ -43,6 +56,9 @@ router.put('/mantenimientos/:placa',(req,res) => {
     })
 })
 
+/**
+ * Endpoint que elimina un mantenimiento
+ */
 router.delete('/mantenimientos/:placa',(req,res) => {
     let placa = req.params.placa
     eliminarMantenimiento(placa).then(respuesta => {

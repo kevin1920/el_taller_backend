@@ -29,7 +29,7 @@ let guardarMantenimiento = async info => {
 }
 
 /**
- * Metodo que obtiene informacion de la base de datos
+ * Metodo que obtiene los mantenimientos para un mecanico de la base de datos
  */
 let traerMantenimientoMecanico = async id => {
     let servicio = new ServicioPG()
@@ -39,6 +39,9 @@ let traerMantenimientoMecanico = async id => {
     return respuesta;
 }
 
+/**
+ * Metodo que obtiene todos los mantenimientos ingresados
+ */
 let traerMantenimientoAdmin = async () => {
     let servicio = new ServicioPG()
     let sql = `select id_mecanico,nombre,apellidos,placa,fecha from mantenimientos
@@ -49,7 +52,7 @@ let traerMantenimientoAdmin = async () => {
 
 
 /**
- * Metodo que elimina informacion de la base de datos
+ * Metodo que elimina un mantenimiento de la base de datos
  */
 let eliminarMantenimiento = async (placa) => {
     let servicio = new ServicioPG()
@@ -60,7 +63,7 @@ let eliminarMantenimiento = async (placa) => {
 }
 
 /**
- * Metodo que actualiza informacion de la base de datos
+ * Metodo que actualiza un mantenimiento de la base de datos
  * @param {*} id 
  * @param {*} info 
  */

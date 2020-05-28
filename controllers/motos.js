@@ -17,7 +17,7 @@ let validarInformacion = info => {
 }
 
 /**
- * Metodo que guarda en la base de datos la informacion
+ * Metodo que guarda una moto en la base de datos
  * @param {*} info 
  */
 
@@ -31,7 +31,7 @@ let guardarMoto = async info => {
 }
 
 /**
- * Metodo que obtiene informacion de la base de datos
+ * Metodo que obtiene las motos de la base de datos
  */
 let obtenerMotos = async () => {
     let servicio = new ServicioPG()
@@ -40,6 +40,9 @@ let obtenerMotos = async () => {
     return respuesta;
 }
 
+/**
+ * Metodo que obtiene las placas de las motos que estan malas
+ */
 let obtenerPlacas = async ()  => {
     let servicio = new ServicioPG()
     let sql = `select placa from motos where estado = 'mala'`
@@ -48,7 +51,7 @@ let obtenerPlacas = async ()  => {
 }
 
 /**
- * Metodo que actualiza informacion de la base de datos
+ * Metodo que actualiza una moto de la base de datos
  * @param {*} id 
  * @param {*} info 
  */
@@ -61,6 +64,11 @@ let actualizarMoto = async (id, info) => {
     return respuesta;
 }
 
+/**
+ * Metodo que actualiza el estado de una moto en la base de datos
+ * @param {*} id 
+ * @param {*} info 
+ */
 let actualizarEstado = async (id, info) => {
     let servicio = new ServicioPG()
     let sql = `update motos set estado = $1 where placa = $2;`
@@ -69,6 +77,10 @@ let actualizarEstado = async (id, info) => {
     return respuesta;
 }
 
+/**
+ * Metodo que elimina una moto de la base de datos
+ * @param {*} id 
+ */
 let eliminarMoto = async (id) => {
     let servicio = new ServicioPG()
     let sql = `delete from motos where placa = $1`

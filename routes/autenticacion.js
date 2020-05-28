@@ -1,3 +1,4 @@
+//importar librerias
 const express = require('express')
 const router = express.Router()
 const {validarInformacion,validarLogin,generarToken,verificarToken} = require('../controllers/autenticacion')

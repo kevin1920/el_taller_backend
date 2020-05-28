@@ -1,7 +1,11 @@
+//importar librerias
 const express = require('express')
 const router = express.Router()
 const {validarInformacion,guardarUsuario,obtenerUsuarios,eliminarUsuario,actualizarUsuario,obtenerMecanicos} = require('../controllers/usuarios')
 
+/**
+ * Endpoint que envia los usuarios
+ */
 router.get('/usuarios',(req,res) => {
     obtenerUsuarios().then(respuesta => {
         res.send(respuesta.rows)
@@ -10,6 +14,9 @@ router.get('/usuarios',(req,res) => {
     })
 })
 
+/**
+ * Endpoint que envia los mecanicos
+ */
 router.get('/mecanicos',(req,res) => {
     obtenerMecanicos().then(respuesta => {
         res.send(respuesta.rows)
@@ -18,6 +25,9 @@ router.get('/mecanicos',(req,res) => {
     })
 })
 
+/**
+ * Endpoint que guarda un usuario
+ */
 router.post('/usuarios',(req,res) => {
     try {
         let info = req.body
@@ -34,6 +44,9 @@ router.post('/usuarios',(req,res) => {
     }
 })
 
+/**
+ * Endpoint que actualiza un usuario
+ */
 router.put('/usuarios/:id',(req,res) => {
     let info = req.body
     let id = req.params.id
@@ -44,6 +57,9 @@ router.put('/usuarios/:id',(req,res) => {
     })
 })
 
+/**
+ * Endpoint que elimina un usuario
+ */
 router.delete('/usuarios/:id',(req,res) => {
     let id = req.params.id
     eliminarUsuario(id).then(respuesta => {
