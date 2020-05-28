@@ -69,4 +69,13 @@ let actualizarEstado = async (id, info) => {
     return respuesta;
 }
 
-module.exports = {validarInformacion,guardarMoto,obtenerMotos,actualizarMoto,obtenerPlacas,actualizarEstado}
+let eliminarMoto = async (id) => {
+    let servicio = new ServicioPG()
+    let sql = `delete from motos where placa = $1`
+    let valores = [id]
+    let respuesta = await servicio.ejecutarSQL(sql,valores)
+    return respuesta;
+}
+
+
+module.exports = {validarInformacion,guardarMoto,obtenerMotos,actualizarMoto,obtenerPlacas,actualizarEstado,eliminarMoto}
